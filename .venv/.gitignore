@@ -1,0 +1,6 @@
+# created by virtualenv automatically
+/.idea
+*.pyc
+/db.sqlite3
+/.env
+/viewer/migrations
