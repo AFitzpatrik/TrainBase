@@ -70,6 +70,7 @@ class ExerciseImage(models.Model):
     def __repr__(self):
         return f'Exercise Image {self.pk}'
 
+
 class ExerciseVideo(models.Model):
     video = models.FileField(upload_to='videos/exercises', default=None, null=False, blank=False)
 
