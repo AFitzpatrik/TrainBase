@@ -27,16 +27,25 @@ class EbookAuthor(models.Model):
     name = models.CharField(max_length=50)
     surname = models.CharField(max_length=50)
 
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return f'{self.name} {self.surname}'
+
+    def __repr__(self):
+        return f'Ebook Author {self.pk}'
+
 
 class Ebook(models.Model):
-    name = models.CharField(max_length=50,unique=True,null=True,blank=True)
+    name = models.CharField(max_length=50,unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    description = models.TextField()
-    ebook_author = models.ForeignKey(EbookAuthor,on_delete=models.CASCADE)
+    description = models.TextField(blank=True, null=True)
+    ebook_author = models.ForeignKey(EbookAuthor,on_delete=models.PROTECT, related_name='ebooks')
 
     class Meta:
-        ordering = ['created_at']
+        ordering = ['-created_at']
 
     def __str__(self):
         return self.name
@@ -52,7 +61,10 @@ class EbookImage(models.Model):
 # EXERCISE SECTION
 class ExerciseBodyPart(models.Model):
     name= models.CharField(max_length=50, unique=True)
-    image_target_muscle = models.ImageField(upload_to='images/body_part', default=None, null=False, blank=False)
+    image_target_muscle = models.ImageField(upload_to='images/body_part', null=True, blank=True)
+
+    class Meta:
+        ordering = ['name']
 
     def __str__(self):
         return self.name
@@ -62,7 +74,7 @@ class ExerciseBodyPart(models.Model):
 
 
 class ExerciseImage(models.Model):
-    image = models.ImageField(upload_to='images/exercises', default=None, null=False, blank=False)
+    image = models.ImageField(upload_to='images/exercises')
 
     def __str__(self):
         return f"Exercise image {self.pk}"
@@ -72,7 +84,7 @@ class ExerciseImage(models.Model):
 
 
 class ExerciseVideo(models.Model):
-    video = models.FileField(upload_to='videos/exercises', default=None, null=False, blank=False)
+    video = models.FileField(upload_to='videos/exercises')
 
     def __str__(self):
         return f"Exercise video {self.pk}"
@@ -80,10 +92,10 @@ class ExerciseVideo(models.Model):
 
 class Exercise(models.Model):
     name = models.CharField(max_length=50)
-    type = models.ForeignKey(ExerciseBodyPart, on_delete=models.CASCADE, related_name='exercises')
+    body_part = models.ForeignKey(ExerciseBodyPart, null=True, blank=True, on_delete=models.SET_NULL, related_name='exercises')
     description = models.TextField(null=True, blank=True)
     video = models.ForeignKey(ExerciseVideo, null=True, on_delete=models.SET_NULL, related_name='exercises')
-    image_exercise = models.ForeignKey(ExerciseImage, null=True, on_delete=models.SET_NULL, related_name='exercises')
+    image = models.ForeignKey(ExerciseImage, null=True, on_delete=models.SET_NULL, related_name='exercises')
 
     class Meta:
         ordering = ["name"]
