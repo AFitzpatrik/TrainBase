@@ -1,0 +1,133 @@
+from django.db import models
+
+# TRAINER SECTION
+'''class OwnerTrainer(models.Model):
+    This model is used for the owner of the page. The user of this app creates their own SUPER USER account,
+    which then takes all information from this model and puts it where it is needed.
+    This approach was chosen because you don’t need to enter the information over again.
+    
+    I Think its redundant for now, maybe regular Superuser with permissions will suffice.
+    Will keep this for later, might be usefull for something.
+    
+    name = models.CharField(max_length=100)
+    surname = models.CharField(max_length=100)
+    tel_number=models.CharField(max_length=100)
+    e_mail=models.CharField(max_length=100)
+'''
+
+
+
+
+
+
+
+# ----E-BOOK SECTION----
+class EbookAuthor(models.Model):
+    name = models.CharField(max_length=50)
+    surname = models.CharField(max_length=50)
+
+    class Meta:
+        ordering = ['surname', 'name']
+
+    def __str__(self):
+        return f'{self.name} {self.surname}'
+
+    def __repr__(self):
+        return f'Ebook Author {self.pk}'
+
+
+class Ebook(models.Model):
+    name = models.CharField(max_length=50,unique=True)
+    cover_image = models.ImageField(upload_to='images/covers', null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    description = models.TextField(blank=True, null=True)
+    ebook_author = models.ForeignKey(EbookAuthor,on_delete=models.PROTECT, related_name='ebooks')
+    price_amount = models.PositiveIntegerField(default=0)
+    price_currency = models.CharField(max_length=3, default='CZK')
+    file = models.FileField(upload_to='pdf_files/ebooks', null=True, blank=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return f'Ebook {self.name}'
+
+
+class EbookImage(models.Model):
+    ebook = models.ForeignKey(Ebook,on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='images/ebooks/gallery')
+    caption = models.CharField(max_length=120, blank=True)
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order']
+
+    def __str__(self):
+        return f'Image {self.pk} for {self.ebook.name}'
+
+    def __repr__(self):
+        return f'{self.pk} {self.ebook.name}'
+
+
+
+
+# ----EXERCISE SECTION----
+class ExerciseBodyPart(models.Model):
+    name= models.CharField(max_length=50, unique=True)
+    image_target_muscle = models.ImageField(upload_to='images/body_part', null=True, blank=True)
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return f'Body part {self.pk}'
+
+
+class ExerciseImage(models.Model):
+    image = models.ImageField(upload_to='images/exercises')
+
+    def __str__(self):
+        return f"Exercise image {self.pk}"
+
+    def __repr__(self):
+        return f'Exercise Image {self.pk}'
+
+
+class ExerciseVideo(models.Model):
+    video = models.FileField(upload_to='videos/exercises')
+
+    def __str__(self):
+        return f"Exercise video {self.pk}"
+
+
+class Exercise(models.Model):
+    name = models.CharField(max_length=50)
+    body_part = models.ForeignKey(ExerciseBodyPart, null=True, blank=True, on_delete=models.SET_NULL, related_name='exercises')
+    description = models.TextField(null=True, blank=True)
+    video = models.ForeignKey(ExerciseVideo, null=True, on_delete=models.SET_NULL, related_name='exercises', blank=True)
+    image = models.ForeignKey(ExerciseImage, null=True, on_delete=models.SET_NULL, related_name='exercises', blank=True)
+
+    class Meta:
+        ordering = ["name"]
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return f'Exercise {self.pk}'
+
+
+
+
+
+
+
+
+

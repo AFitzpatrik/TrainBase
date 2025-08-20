@@ -4,3 +4,8 @@
 /db.sqlite3
 /.env
 /viewer/migrations
+/accounts/migrations
+/migrations
+viewer/db.sqlite3
+*.sqlite3
+.venv/
