@@ -6,3 +6,4 @@
 /viewer/migrations
 /accounts/migrations
 /migrations
+viewer/db.sqlite3
