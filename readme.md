@@ -80,6 +80,10 @@ V systému, je jen jeden owner trenér.
 
 - Cíl je aby owner trener, nemusel nic menit v kodu a vše zvládl udělat skrz admin panel nebo přímo na stránace skrz permissions
 
+- Dále zde chci mít možnosti
+  - 1 Přidat ebook/obecné workout knihy atd a možnost je přímo koupit i bez přihlášení
+  - 2 Kontaktní formulář
+
 
 
 

@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models import ForeignKey, Model, ImageField
 
 # TRAINER SECTION
 '''class OwnerTrainer(models.Model):
@@ -22,13 +21,13 @@ from django.db.models import ForeignKey, Model, ImageField
 
 
 
-# E-BOOK SECTION
+# ----E-BOOK SECTION----
 class EbookAuthor(models.Model):
     name = models.CharField(max_length=50)
     surname = models.CharField(max_length=50)
 
     class Meta:
-        ordering = ['name']
+        ordering = ['surname', 'name']
 
     def __str__(self):
         return f'{self.name} {self.surname}'
@@ -39,10 +38,14 @@ class EbookAuthor(models.Model):
 
 class Ebook(models.Model):
     name = models.CharField(max_length=50,unique=True)
+    cover_image = models.ImageField(upload_to='images/covers', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     description = models.TextField(blank=True, null=True)
     ebook_author = models.ForeignKey(EbookAuthor,on_delete=models.PROTECT, related_name='ebooks')
+    price_amount = models.PositiveIntegerField(default=0)
+    price_currency = models.CharField(max_length=3, default='CZK')
+    file = models.FileField(upload_to='pdf_files/ebooks', null=True, blank=True)
 
     class Meta:
         ordering = ['-created_at']
@@ -55,10 +58,24 @@ class Ebook(models.Model):
 
 
 class EbookImage(models.Model):
-    ebook = models.ForeignKey(Ebook,on_delete=models.CASCADE)
+    ebook = models.ForeignKey(Ebook,on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='images/ebooks/gallery')
+    caption = models.CharField(max_length=120, blank=True)
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order']
+
+    def __str__(self):
+        return f'Image {self.pk} for {self.ebook.name}'
+
+    def __repr__(self):
+        return f'{self.pk} {self.ebook.name}'
 
 
-# EXERCISE SECTION
+
+
+# ----EXERCISE SECTION----
 class ExerciseBodyPart(models.Model):
     name= models.CharField(max_length=50, unique=True)
     image_target_muscle = models.ImageField(upload_to='images/body_part', null=True, blank=True)
@@ -94,8 +111,8 @@ class Exercise(models.Model):
     name = models.CharField(max_length=50)
     body_part = models.ForeignKey(ExerciseBodyPart, null=True, blank=True, on_delete=models.SET_NULL, related_name='exercises')
     description = models.TextField(null=True, blank=True)
-    video = models.ForeignKey(ExerciseVideo, null=True, on_delete=models.SET_NULL, related_name='exercises')
-    image = models.ForeignKey(ExerciseImage, null=True, on_delete=models.SET_NULL, related_name='exercises')
+    video = models.ForeignKey(ExerciseVideo, null=True, on_delete=models.SET_NULL, related_name='exercises', blank=True)
+    image = models.ForeignKey(ExerciseImage, null=True, on_delete=models.SET_NULL, related_name='exercises', blank=True)
 
     class Meta:
         ordering = ["name"]
