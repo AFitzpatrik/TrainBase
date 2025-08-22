@@ -14,3 +14,5 @@ class EbookCreateView(CreateView):
     template_name = 'EbookCreateView.html'
     success_url = '/'
 
+    def form_valid(self, form):
+
