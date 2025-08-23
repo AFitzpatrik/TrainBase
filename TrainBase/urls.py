@@ -17,9 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from viewer.views import landing_page
+from viewer.views import EbookCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", landing_page),
+
+    path('ebook/create/', EbookCreateView.as_view(), name='ebook_create'),
 ]

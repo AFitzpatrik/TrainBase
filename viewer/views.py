@@ -1,6 +1,4 @@
-from django.shortcuts import render
 from django.views.generic import CreateView
-
 from viewer.models import Ebook
 
 
@@ -11,8 +9,7 @@ from viewer.models import Ebook
 class EbookCreateView(CreateView):
     model = Ebook
     fields = '__all__'
-    template_name = 'EbookCreateView.html'
+    template_name = 'ebook_create.html'
     success_url = '/'
 
-    def form_valid(self, form):
 
