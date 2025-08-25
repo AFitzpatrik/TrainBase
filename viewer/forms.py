@@ -7,8 +7,6 @@ class EbookCreateForm(forms.ModelForm):
         model = Ebook
         fields = ["name",
                   "cover_image",
-                  "created_at",
-                  "updated_at",
                   "description",
                   "price_amount",
                   "price_currency",
