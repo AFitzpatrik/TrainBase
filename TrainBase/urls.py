@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
 
-from viewer.views import EbookCreateView, AuthorCreateView
+from viewer.views import EbookCreateView, AuthorCreateView, EbookListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +26,5 @@ urlpatterns = [
 
     path('ebook/create/', EbookCreateView.as_view(), name='ebook_create'),
     path('author/create/', AuthorCreateView.as_view(), name='author_create'),
+    path('ebook/list/', EbookListView.as_view(), name='ebook_list'),
 ]

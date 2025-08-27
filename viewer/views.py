@@ -1,4 +1,5 @@
-from django.views.generic import CreateView, DetailView, FormView
+
+from django.views.generic import CreateView, DetailView, FormView, ListView
 from viewer.models import Ebook, EbookAuthor
 from .forms import EbookForm, EbookAuthorForm
 
@@ -10,6 +11,11 @@ class EbookCreateView(CreateView):
     form_class = EbookForm
     template_name = 'ebook_create.html'
     success_url = '/'
+
+class EbookListView(ListView):
+    template_name = 'ebook_list.html'
+    model = Ebook
+    context_object_name = 'ebooks'
 
 
 ''' Class used for adding new authors, so it can be later used in ebooks,

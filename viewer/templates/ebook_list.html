@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    E-books list
+{% endblock %}
+
+{% block content %}
+    <h1>Seznam žánrů</h1>
+    <ul>
+        {% for ebook in ebooks %}
+            <li>
+                <a href="{% url 'ebook' ebook.id %}">{{ ebook }}</a>
+                <ul>
+                    {% for movie in genre.movies.all %}
+                        <li><a href="{% url 'movie' movie.id %}">{{ movie }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
