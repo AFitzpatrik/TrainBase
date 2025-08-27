@@ -16,6 +16,6 @@ class EbookCreateView(CreateView):
 in case website owner wants to add ebooks written by differed people'''
 class AuthorCreateView(CreateView):
     model = EbookAuthor
-    form_class = EbookAuthor
+    form_class = EbookAuthorForm
     template_name = 'author_create.html'
     success_url = '/'

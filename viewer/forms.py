@@ -42,4 +42,4 @@ class EbookForm(forms.ModelForm):
 class EbookAuthorForm(forms.ModelForm):
     class Meta:
         model = EbookAuthor
-        fields = ["name",]
+        fields = ["name", "surname"]
