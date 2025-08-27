@@ -16,10 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import TemplateView
 
-from viewer.views import landing_page
+from viewer.views import EbookCreateView, AuthorCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", landing_page),
+    path('', TemplateView.as_view(template_name='home.html'), name='home'),
+
+    path('ebook/create/', EbookCreateView.as_view(), name='ebook_create'),
+    path('author/create/', AuthorCreateView.as_view(), name='author_create'),
 ]
