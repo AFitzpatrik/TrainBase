@@ -155,6 +155,7 @@ DATABAZE
 
 DONE
 - [x] Add Ebook
+- [x] Add Author
 
 
 
