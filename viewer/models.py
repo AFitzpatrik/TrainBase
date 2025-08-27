@@ -15,12 +15,6 @@ from django.db import models
     e_mail=models.CharField(max_length=100)
 '''
 
-
-
-
-
-
-
 # ----E-BOOK SECTION----
 class EbookAuthor(models.Model):
     name = models.CharField(max_length=50)

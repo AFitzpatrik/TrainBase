@@ -1,5 +1,5 @@
 from django import forms
-from .models import Ebook
+from .models import Ebook, EbookAuthor
 
 
 class EbookForm(forms.ModelForm):
@@ -37,3 +37,9 @@ class EbookForm(forms.ModelForm):
                       "cover_image": "Upload a cover image for your E-book",
                       "file": "Upload your E-book file (PDF recommended)"
                       }
+
+
+class EbookAuthorForm(forms.ModelForm):
+    class Meta:
+        model = EbookAuthor
+        fields = ["name",]
