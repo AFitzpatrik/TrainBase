@@ -26,9 +26,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('aboutme/', TemplateView.as_view(template_name='about_me.html'), name='about_me'),
+    path('contact/', TemplateView.as_view(template_name='contact.html'), name='contact'),
+
     path('author/create/', AuthorCreateView.as_view(), name='author_create'),
-
-
 
     path('ebook/create/', EbookCreateView.as_view(), name='ebook_create'),
     path('ebook/list/', EbookListView.as_view(), name='ebook_list'),
