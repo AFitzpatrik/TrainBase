@@ -1,3 +1,31 @@
-from django.shortcuts import render
 
-# Create your views here.
+from django.views.generic import CreateView, DetailView, FormView, ListView
+from viewer.models import Ebook, EbookAuthor
+from .forms import EbookForm, EbookAuthorForm
+
+''' ----- EBOOK SECTION -----'''
+
+''' Class used for adding new ebooks to the website'''
+class EbookCreateView(CreateView):
+    model = Ebook
+    form_class = EbookForm
+    template_name = 'ebook_create.html'
+    success_url = '/'
+
+class EbookListView(ListView):
+    template_name = 'ebook_list.html'
+    model = Ebook
+    context_object_name = 'ebooks'
+
+class EbookDetailView(DetailView):
+    template_name = 'ebook_detail.html'
+    model = Ebook
+    context_object_name = 'ebook'
+
+''' Class used for adding new authors, so it can be later used in ebooks,
+in case website owner wants to add ebooks written by differed people'''
+class AuthorCreateView(CreateView):
+    model = EbookAuthor
+    form_class = EbookAuthorForm
+    template_name = 'author_create.html'
+    success_url = '/'

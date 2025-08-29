@@ -5,6 +5,7 @@
 /.env
 /viewer/migrations
 /accounts/migrations
+/shop/migrations
 /migrations
 viewer/db.sqlite3
 *.sqlite3

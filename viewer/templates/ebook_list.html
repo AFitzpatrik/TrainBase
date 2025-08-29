@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    E-books list
+{% endblock %}
+
+{% block content %}
+        <h1>E-books list</h1>
+        {% for ebook in ebooks %}
+        <ul>{{ ebook.name }}</ul>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %}
+
+
+<html lang="en">
+<head>
+{% include 'navbar.html' %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>{% block title %}TrainBase{% endblock %}</title>
+</head>
+
+
+<body>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+{%include 'footer.html'%}
+</body>
+</html>

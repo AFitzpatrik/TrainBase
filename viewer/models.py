@@ -15,12 +15,6 @@ from django.db import models
     e_mail=models.CharField(max_length=100)
 '''
 
-
-
-
-
-
-
 # ----E-BOOK SECTION----
 class EbookAuthor(models.Model):
     name = models.CharField(max_length=50)
@@ -42,7 +36,7 @@ class Ebook(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     description = models.TextField(blank=True, null=True)
-    ebook_author = models.ForeignKey(EbookAuthor,on_delete=models.PROTECT, related_name='ebooks')
+    ebook_author = models.ForeignKey(EbookAuthor,on_delete=models.PROTECT, related_name='ebooks', null=True, blank=True)
     price_amount = models.PositiveIntegerField(default=0)
     price_currency = models.CharField(max_length=3, default='CZK')
     file = models.FileField(upload_to='pdf_files/ebooks', null=True, blank=True)
@@ -71,8 +65,6 @@ class EbookImage(models.Model):
 
     def __repr__(self):
         return f'{self.pk} {self.ebook.name}'
-
-
 
 
 # ----EXERCISE SECTION----
