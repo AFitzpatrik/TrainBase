@@ -123,12 +123,16 @@ DATABAZE
 -[ ] 7.0 List of My services
   - [ ] 7.1 List of E-books
     - [ ] 7.1.1 E-book detail
-  -[ ] 7.2 Personal meal plan
+  -
+  - [ ] 7.2 Personal meal plan
     - [ ] 7.2.1 Personal meal plan detail (one)
-  -[ ] 7.3 Personal workout plan
+  -
+  - [ ] 7.3 Personal workout plan
     - [ ] 7.3.1 Personal workout plan detail (one)
-  -[ ] 7.4 Entry consultation
-  -[ ] 7.5 Monthly cooperation
+  -
+  - [ ] 7.4 Entry consultation
+  -
+  - [ ] 7.5 Monthly cooperation
     - [ ] 7.5.1 1 month
     - [ ] 7.5.2 3 months
     - [ ] 7.5.2 6 months
@@ -154,10 +158,15 @@ DATABAZE
 
 
 DONE
-- [x] Add Ebook
-- [x] Add Author
-- [x] Ebook detail page
-- [x] Ebook list page
+
+- [x] EBOOK FEATURE
+  - [x] Add Ebook
+  - [x] Add Author
+  - [x] Ebook detail page
+  - [x] Ebook list page
+
+
+
 
 
 
