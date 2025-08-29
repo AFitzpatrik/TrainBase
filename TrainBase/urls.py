@@ -26,8 +26,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
 
-    path('ebook/create/', EbookCreateView.as_view(), name='ebook_create'),
     path('author/create/', AuthorCreateView.as_view(), name='author_create'),
+
+    path('ebook/create/', EbookCreateView.as_view(), name='ebook_create'),
     path('ebook/list/', EbookListView.as_view(), name='ebook_list'),
     path('ebook/<int:pk>/', EbookDetailView.as_view(), name='ebook_detail'),
 ]

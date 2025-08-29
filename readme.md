@@ -156,6 +156,8 @@ DATABAZE
 DONE
 - [x] Add Ebook
 - [x] Add Author
+- [x] Ebook detail page
+- [x] Ebook list page
 
 
 
