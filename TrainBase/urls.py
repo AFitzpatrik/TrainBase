@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView,DetailView
+from django.conf import settings
+from django.conf.urls.static import static
 
-from viewer.views import EbookCreateView, AuthorCreateView, EbookListView
+from viewer.views import EbookCreateView, AuthorCreateView, EbookListView, EbookDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +29,9 @@ urlpatterns = [
     path('ebook/create/', EbookCreateView.as_view(), name='ebook_create'),
     path('author/create/', AuthorCreateView.as_view(), name='author_create'),
     path('ebook/list/', EbookListView.as_view(), name='ebook_list'),
+    path('ebook/<int:pk>/', EbookDetailView.as_view(), name='ebook_detail'),
 ]
+
+# Serve media files during development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

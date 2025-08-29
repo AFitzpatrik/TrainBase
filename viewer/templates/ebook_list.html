@@ -5,10 +5,9 @@
 {% endblock %}
 
 {% block content %}
-    <h1>E-books list</h1>
-    {% for ebook in ebooks %}
-<a href="{{ ebook.get_absolute_url }}">{{ ebook.title }}</a>
-{% endfor %}
-
+        <h1>E-books list</h1>
+        {% for ebook in ebooks %}
+        <ul>{{ ebook.name }}</ul>
+    {% endfor %}
 
 {% endblock %}
