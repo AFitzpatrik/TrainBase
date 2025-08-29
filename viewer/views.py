@@ -17,7 +17,6 @@ class EbookListView(ListView):
     model = Ebook
     context_object_name = 'ebooks'
 
-
 ''' Class used for adding new authors, so it can be later used in ebooks,
 in case website owner wants to add ebooks written by differed people'''
 class AuthorCreateView(CreateView):

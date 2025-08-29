@@ -67,8 +67,6 @@ class EbookImage(models.Model):
         return f'{self.pk} {self.ebook.name}'
 
 
-
-
 # ----EXERCISE SECTION----
 class ExerciseBodyPart(models.Model):
     name= models.CharField(max_length=50, unique=True)
