@@ -87,3 +87,9 @@ footer {
 footer p {
   margin: 0;                            /* remove default margin from paragraph */
 }
+
+/* ----- ACCESSORIES ----- */
+.social-icon ion-icon {  /* Styling social media icons */
+    color: white;
+
+}
