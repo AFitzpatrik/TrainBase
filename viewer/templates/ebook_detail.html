@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}
-    Detail of a {{ ebook.name }}
-{% endblock %}
+{% block title %} | Add author{% endblock %}
+
 {% block content %}
   <p> Name:  {{ ebook.name }} </p>
 {% if ebook.cover_image %}
@@ -15,4 +14,9 @@
   <p> Price: {{ ebook.price_amount }} </p><p>{{ ebook.price_currency }}</p>
   <p> PDF File: {{ ebook.file }} </p>
   <p> Author: {{ ebook.ebook_author }}</p>
+
+
+
+
+
 {% endblock %}
