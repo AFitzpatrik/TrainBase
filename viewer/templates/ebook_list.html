@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+<a href="{% url 'ebook_create' %}">CLICK</a>
         <h1>E-books list</h1>
         {% for ebook in ebooks %}
         <ul>{{ ebook.name }}</ul>
