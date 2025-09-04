@@ -10,7 +10,7 @@ def test_add_book():
         page.goto("http://127.0.0.1:8000/ebook/create/")
         expect(page).to_have_title(re.compile("Add e-book"))
 
-        page.fill('#id_name', "name")
+        page.fill('#id_name', "Test")
         page.select_option("#id_ebook_author", label="franta pepa jednička")
 
         page.wait_for_selector('#id_description')
@@ -21,6 +21,10 @@ def test_add_book():
         page.fill('#id_price_currency', 'USD')
 
         page.click("input[type=submit]")
+
+        expect(page).to_have_title(re.compile("HOMEPAGE!!!"))
+
+
 
 
 
