@@ -8,4 +8,5 @@ from playwright.async_api import async_playwright
 class TestDataGenerator:
     @staticmethod
     def random_name_test(length=10):
+        # Generates random name in "TEST-[Random 10 letter]" model. Length can be adjusted.
         return "TEST-" + "" .join(random.choices(string.ascii_letters, k=length))

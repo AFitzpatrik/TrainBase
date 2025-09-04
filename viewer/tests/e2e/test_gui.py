@@ -1,9 +1,9 @@
 import re
-from test_data_generator import *
+from ..test_data_generator import TestDataGenerator
 
 from playwright.sync_api import sync_playwright, expect
 
-def test_add_book():
+def test_add_book_without_image_and_file():
     with sync_playwright() as p:
         #This so we can see browser in action during the test
         browser = p.chromium.launch(headless=False)
@@ -13,7 +13,9 @@ def test_add_book():
 
         name = TestDataGenerator.random_name_test()
         page.fill('#id_name', name)
-        page.wait_for_timeout(4000)
+
+        # Timeout for check of name
+        page.wait_for_timeout(1000)
 
         page.select_option("#id_ebook_author", label="franta pepa jednička")
 
