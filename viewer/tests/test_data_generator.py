@@ -1,9 +1,11 @@
 import string
-from random import random
-import pytest
+import random
+from playwright.async_api import async_playwright
 
-'''This file is used for generating data for playwright test across this project'''
+'''This file is used for generating data for playwright test across this project, so its always unique'''
+
 
 class TestDataGenerator:
-    def random_name(length=7):
-        return ''.join(random.choices(string.ascii_uppercase + string.digits, k=length))
+    @staticmethod
+    def random_name_test(length=10):
+        return "TEST-" + "" .join(random.choices(string.ascii_letters, k=length))

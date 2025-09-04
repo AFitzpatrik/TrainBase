@@ -1,4 +1,5 @@
 import re
+from test_data_generator import *
 
 from playwright.sync_api import sync_playwright, expect
 
@@ -10,7 +11,10 @@ def test_add_book():
         page.goto("http://127.0.0.1:8000/ebook/create/")
         expect(page).to_have_title(re.compile("Add e-book"))
 
-        page.fill('#id_name', "Test")
+        name = TestDataGenerator.random_name_test()
+        page.fill('#id_name', name)
+        page.wait_for_timeout(4000)
+
         page.select_option("#id_ebook_author", label="franta pepa jednička")
 
         page.wait_for_selector('#id_description')
