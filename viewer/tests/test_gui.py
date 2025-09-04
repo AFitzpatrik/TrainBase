@@ -18,6 +18,10 @@ def test_add_book():
 
         page.fill('#id_price_amount', '199')
 
+        page.fill('#id_price_currency', 'USD')
+
+        page.click("input[type=submit]")
+
 
 
 
