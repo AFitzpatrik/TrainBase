@@ -30,11 +30,5 @@ def test_add_book_without_image_and_file():
 
         expect(page).to_have_title(re.compile("HOMEPAGE!!!"))
 
-
-
-
-
-
-
         page.wait_for_timeout(4000)
         browser.close()

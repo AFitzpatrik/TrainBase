@@ -1,6 +1,5 @@
 import string
 import random
-from playwright.async_api import async_playwright
 
 '''This file is used for generating data for playwright test across this project, so its always unique'''
 
