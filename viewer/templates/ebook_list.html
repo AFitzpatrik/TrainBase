@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load static %}
+
 
 {% block title %}
     E-books list
@@ -7,8 +9,27 @@
 {% block content %}
 <a href="{% url 'ebook_create' %}">CLICK</a>
         <h1>E-books list</h1>
-        {% for ebook in ebooks %}
-        <ul>{{ ebook.name }}</ul>
-    {% endfor %}
 
+    <div class="card-container-list">
+        {# Wrapping div, which functions as container for all cards #}
+        {% for ebook in ebooks %}
+
+        <div class="card">
+            {# one card, in which there will be info about single ebook #}
+
+            <h2><a href="{% url 'ebook_detail' ebook.pk %}">{{ ebook.name }}</a></h2>
+            {% if ebook.cover_image %}
+                <img src="{{ ebook.cover_image.url }}" alt="{{ ebook.name }} cover" class="ebook-cover">
+            {% else %}
+                <img src="{% static 'images/covers/placeholder.png' %}" alt="{{ ebook.name }} cover" class="ebook-cover">
+            {% endif %}
+        </div>
+
+        {% endfor %}
+</div>
+{# Container ends here, all cards will appear inside this container #}
 {% endblock %}
+
+
+
+
