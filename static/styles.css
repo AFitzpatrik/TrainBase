@@ -93,3 +93,13 @@ footer p {
     color: white;
 
 }
+
+/* ----- LIST SECTION ----- */
+/* Right now styles a ebook list to a grid and cards */
+
+.card-container-list {
+    display: grid;                          /* sets a grid layout */
+    grid-template-columns: repeat(3, 1fr);  /* columns in grid (make 3 columns, all will take the same space */
+    gap: 10px;                              /* space between cards */
+    margin-top: 10px;                       /* space around whole container */
+}

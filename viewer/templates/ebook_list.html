@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+
 {% block title %}
     E-books list
 {% endblock %}
@@ -7,12 +8,18 @@
 {% block content %}
 <a href="{% url 'ebook_create' %}">CLICK</a>
         <h1>E-books list</h1>
-        {% for ebook in ebooks %}
-        <li>
-            <a href="{% url 'ebook_detail' ebook.pk %}">{{ ebook.name }}</a>
-        </li>
-    {% endfor %}
 
+    <div class="card-container-list">
+        {# Wrapping div, which functions as container for all cards #}
+        {% for ebook in ebooks %}
+        <div class="card">
+            {# one card, in which there will be info about single ebook #}
+
+            <a href="{% url 'ebook_detail' ebook.pk %}">{{ ebook.name }}</a>
+        </div>
+        {% endfor %}
+</div>
+{# Container ends here, all cards will appear inside this container #}
 {% endblock %}
 
 
