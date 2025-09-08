@@ -16,12 +16,12 @@
         <div class="card">
             {# one card, in which there will be info about single ebook #}
 
-            <a href="{% url 'ebook_detail' ebook.pk %}">{{ ebook.name }}</a>
+            <h2><a href="{% url 'ebook_detail' ebook.pk %}">{{ ebook.name }}</a></h2>
             {% if ebook.cover_image %}
                 <img src="{{ ebook.cover_image.url }}" alt="{{ ebook.name }} cover" class="ebook-cover">
-                {% else %}
+            {% else %}
                 <img src="{% static 'images/covers/placeholder.png' %}" alt="{{ ebook.name }} cover" class="ebook-cover">
-                {% endif %}
+            {% endif %}
         </div>
         {% endfor %}
 </div>
