@@ -13,6 +13,7 @@
     <div class="card-container-list">
         {# Wrapping div, which functions as container for all cards #}
         {% for ebook in ebooks %}
+
         <div class="card">
             {# one card, in which there will be info about single ebook #}
 
@@ -23,6 +24,7 @@
                 <img src="{% static 'images/covers/placeholder.png' %}" alt="{{ ebook.name }} cover" class="ebook-cover">
             {% endif %}
         </div>
+
         {% endfor %}
 </div>
 {# Container ends here, all cards will appear inside this container #}
