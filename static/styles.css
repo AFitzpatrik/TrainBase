@@ -103,3 +103,8 @@ footer p {
     gap: 10px;                              /* space between cards */
     margin-top: 10px;                       /* space around whole container */
 }
+
+.ebook-cover {
+    width: 150px;
+    height: auto;
+}
