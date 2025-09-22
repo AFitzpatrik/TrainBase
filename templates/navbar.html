@@ -8,7 +8,10 @@
             <li><a href="#"><ion-icon name="call-outline"></ion-icon> Contact</a></li>
 
             <div class="auth-group">
+                {% if not user.is_authenticated %}
                 <li><a href="#"><ion-icon name="add-circle-outline"></ion-icon> Register</a></li>
+                {% endif %}
+
                 {% if user.is_authenticated %}
                     {{ user.username }}
                 {% else %}
