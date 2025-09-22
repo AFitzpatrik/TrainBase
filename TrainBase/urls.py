@@ -15,6 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth.views import LoginView
 from django.urls import path
 from django.views.generic import TemplateView,DetailView
 from django.conf import settings
@@ -33,6 +34,8 @@ urlpatterns = [
     path('ebook/create/', EbookCreateView.as_view(), name='ebook_create'),
     path('ebook/list/', EbookListView.as_view(), name='ebook_list'),
     path('ebook/<int:pk>/', EbookDetailView.as_view(), name='ebook_detail'),
+
+    path('accounts/login', LoginView.as_view(template_name='accounts/login.html'), name='login'),
 ]
 
 # Serve media files during development
