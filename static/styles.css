@@ -74,6 +74,11 @@ ul.navbar li a:hover {
   background-color: #111;  /* Darker background on hover */
 }
 
+/* Auth group (REGISTER/LOGIN) positioning to te right */
+ul.navbar .auth-group {
+  margin-left: auto;
+  display: flex;
+}
 /* ----- FOOTER SECTION ----- */
 footer {
   background-color: var(--dark-dark);    /* dark background */
