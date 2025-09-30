@@ -35,7 +35,7 @@ urlpatterns = [
     path('ebook/list/', EbookListView.as_view(), name='ebook_list'),
     path('ebook/<int:pk>/', EbookDetailView.as_view(), name='ebook_detail'),
 
-    path('accounts/login', LoginView.as_view(template_name='accounts/login.html'), name='login'),
+    path('accounts/login', LoginView.as_view(), name='login'),
 ]
 
 # Serve media files during development

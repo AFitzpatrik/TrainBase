@@ -15,7 +15,7 @@
                 {% if user.is_authenticated %}
                     {{ user.username }}
                 {% else %}
-                <li><a href="#"><ion-icon name="log-in-outline"></ion-icon> Login</a></li>
+                <li><a href="{% url 'login' %}"><ion-icon name="log-in-outline"></ion-icon> Login</a></li>
                 {% endif %}
             </div>
         </ul>
