@@ -166,6 +166,9 @@ DONE
   - [x] Ebook list page
   - [x] Contact me page HTML
   - [x] About me page HTML
+  - [ ] Login (Autentizace)
+  - [ ] Authorizace (rights)
+  - [ ] 
 
 
 
